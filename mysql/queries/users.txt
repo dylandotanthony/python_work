@@ -1,0 +1,36 @@
+USE users_schema;
+SELECT * FROM users;
+-- Query: Create 3 new users
+INSERT INTO users
+(id,first_name,last_name,email,created_at,updated_at)
+VALUES
+(1,'Dylan','Stalcar','anthony@dylan.io',NOW(),NOW()),
+(2,'Alexis','Stalcar','lenore@alexis.io',NOW(),NOW()),
+(3,'Patricia','Paulson','faye@patricia.io',NOW(),NOW());
+-- Query: Retrieve all the users
+SELECT * FROM users;
+-- Query: Retrieve the first user using their email address
+Select * 
+FROM users
+WHERE email='anthony@dylan.io';
+-- Query: Retrieve the last user using their id
+Select * 
+FROM users
+WHERE id=3;
+-- Query: Change the user with id=3 so their last name is Pancakes
+UPDATE users
+SET last_name='Pancakes'
+Where id=3;
+SELECT * FROM users;
+-- Query: Delete the user with id=2 from the database
+DELETE FROM users_schema.users
+Where id=2;
+SELECT * FROM users;
+-- Query: Get all the users, sorted by their first name
+SELECT *
+FROM users
+ORDER BY first_name ASC;
+-- BONUS Query: Get all the users, sorted by their first name in descending order
+SELECT *
+FROM users
+ORDER BY first_name DESC;

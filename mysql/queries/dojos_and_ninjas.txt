@@ -1,0 +1,64 @@
+USE dojos_and_ninjas_schema;
+SELECT * FROM dojos;
+SELECT * FROM ninjas;
+-- Query: Create 3 new dojos
+INSERT INTO dojos
+(id,name,created_at,updated_at)
+VALUES
+(1,'Albony',NOW(),NOW()),
+(2,'Newwerk',NOW(),NOW()),
+(3,'Issaqua',NOW(),NOW());
+-- Query: Delete the 3 dojos you just created
+DELETE FROM dojos_and_ninjas_schema.dojos
+WHERE id IN(1,2,3);
+-- Query: Create 3 more dojos
+INSERT INTO dojos
+(id,name,created_at,updated_at)
+VALUES
+(1,'Bronno',NOW(),NOW()),
+(2,'Milleth',NOW(),NOW()),
+(3,'Oreshio',NOW(),NOW());
+-- Query: Create 3 ninjas that belong to the first dojo
+INSERT INTO ninjas
+(id,first_name,last_name,age,created_at,updated_at,dojo_id)
+VALUES
+(1,'Bronnie','Medina',41,NOW(),NOW(),4),
+(2,'Zankou','Anthony',24,NOW(),NOW(),4),
+(3,'Creed','Mellaka',66,NOW(),NOW(),4);
+-- Query: Create 3 ninjas that belong to the second dojo
+INSERT INTO ninjas
+(id,first_name,last_name,age,created_at,updated_at,dojo_id)
+VALUES
+(4,'Shimmie','Obo',16,NOW(),NOW(),5),
+(5,'Danch','Pelleth',29,NOW(),NOW(),5),
+(6,'Cici','Bipi',46,NOW(),NOW(),5);
+-- Query: Create 3 ninjas that belong to the third dojo
+INSERT INTO ninjas
+(id,first_name,last_name,age,created_at,updated_at,dojo_id)
+VALUES
+(7,'Mortjot','Stinni',75,NOW(),NOW(),6),
+(8,'Dwight','Shew',99,NOW(),NOW(),6),
+(9,'Mandy','Probo',25,NOW(),NOW(),6);
+-- Query: Retrieve all the ninjas from the first dojo
+Select * 
+FROM dojos
+LEFT JOIN ninjas ON dojos.id=ninjas.dojo_id
+WHERE dojos.id=4;
+-- Query: Retrieve all the ninjas from the last dojo
+Select * 
+FROM dojos
+LEFT JOIN ninjas ON dojos.id=ninjas.dojo_id
+	WHERE dojos.id=(SELECT dojo_id FROM ninjas ORDER BY dojo_id DESC LIMIT 1);
+-- Query: Retrieve the last ninja's dojo
+SELECT *
+FROM dojos
+WHERE dojos.id = (SELECT dojo_id FROM ninjas ORDER BY dojo_id DESC LIMIT 1);
+
+
+
+
+
+
+
+
+
