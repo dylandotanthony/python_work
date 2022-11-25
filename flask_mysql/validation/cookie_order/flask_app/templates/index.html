@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <title>Cookies</title>
+</head>
+<body class="col-6 mx-auto bg-info p-2 text-dark bg-gradient bg-opacity-10">
+    <h1>Cookie Order</h1>
+    <br>
+    <div class="d-flex justify-content-between">
+        <h3>All Orders:</h3>
+        <a href="/cookies/new" class="btn btn-outline-secondary">+ New Order</a>
+
+    </div>
+    <table class="table table-hover table-stripe">
+        <thead>
+            <tr>
+                <th scope="col">Customer Name</th>
+                <th scope="col">Cookie Type</th>
+                <th scope="col">Number of Boxes</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cookie in cookies %}
+            <tr>
+                <td>{{cookie.customer_name}}</td>
+                <td>{{cookie.cookie_type}}</td>
+                <td>{{cookie.num_box}}</td>
+                <td>
+                    <a href="/cookie/edit/{{cookie.id}}" class="text-success">Edit</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+</body>
+</html>
